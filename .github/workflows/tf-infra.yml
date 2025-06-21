@@ -1,0 +1,43 @@
+name: tf-infra pipeline
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main 
+
+jobs: 
+  tf-workflow: 
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v4 
+
+      - name: aws configure
+        uses: aws-actions/configure-aws-credentials@v4.1.0
+        with: 
+          aws-region: us-east-2
+          aws-access-key-id: {{ secrets.AWSACCESSKEY }}
+          aws-secret-access-key: {{ secrets.AWSSECRETACCESSKEY }}
+
+      - name: install terraform 
+        uses: hashicorp/setup-terraform@v3
+      
+      - name: terraform setup 
+        run: |
+          terraform init
+          terraform fmt
+          echo
+          terraform validate
+        working-directory: terraform 
+
+      - name: terraform plan
+        run: |
+          terraform plan
+        working-directory: terraform 
+
+      - name: terraform apply
+        run: |
+          terraform apply --auto-approve
+        working-directory: terraform 
