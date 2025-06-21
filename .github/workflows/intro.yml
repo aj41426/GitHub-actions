@@ -7,8 +7,12 @@ jobs:
   basic-workflow: 
     runs-on: ubuntu-latest
     steps:
-      - name: first step 
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: second step 
         run: |
+          ls -la 
           cat test.txt
           
 
