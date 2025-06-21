@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: first step 
         run: |
-          echo test.txt
+          cat test.txt
           
 
 
