@@ -1,0 +1,13 @@
+name: intro pipeline
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  basic-workflow: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step 
+        run: echo "hello world"
+
+  
