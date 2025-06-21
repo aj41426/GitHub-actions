@@ -8,9 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: first step 
-        run: echo "hello world" > hello.txt 
-      
-      - name: second step
-        run: cat hello.txt 
+        run: |
+          echo "hello world" > file.txt
+          cat file.txt
+          mv file.txt file2.txt
+          ls
+
+          
 
   
