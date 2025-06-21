@@ -9,11 +9,9 @@ jobs:
     steps:
       - name: first step 
         run: |
-          echo "hello world" > file.txt
-          cat file.txt
-          mv file.txt file2.txt
-          ls
-
+          echo test.txt
           
+
+
 
   
